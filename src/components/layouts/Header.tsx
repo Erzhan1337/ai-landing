@@ -1,17 +1,16 @@
 "use client";
 
-import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Github, Twitter } from "lucide-react";
 import { useUIStore } from "@/store/useUIStore";
 import Link from "next/link";
 
 const NAV_LINKS = [
-  "Smart Contracts",
-  "Services",
-  "Solutions",
-  "Roadmap",
-  "White paper",
+  { label: "Smart Contracts", href: "#smart-contracts" },
+  { label: "Services", href: "#services" },
+  { label: "Solutions", href: "#solutions" },
+  { label: "Roadmap", href: "#roadmap" },
+  { label: "White paper", href: "#white-paper" },
 ];
 
 export const Header = () => {
@@ -28,29 +27,39 @@ export const Header = () => {
         </Link>
 
         <nav className="hidden lg:flex gap-8 text-[13px] text-gray-300">
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.map(({ label, href }) => (
             <Link
-              key={link}
-              href={`#${link.toLowerCase().replace(" ", "-")}`}
+              key={href}
+              href={href}
               className="hover:text-white transition-colors"
             >
-              {link}
+              {label}
             </Link>
           ))}
         </nav>
 
         <div className="hidden md:flex gap-5 items-center text-gray-400">
-          <a href="#" className="hover:text-brand-purple transition-colors">
+          <Link
+            href="#"
+            aria-label="GitHub"
+            className="hover:text-brand-purple transition-colors"
+          >
             <Github size={20} />
-          </a>
-          <a href="#" className="hover:text-brand-purple transition-colors">
+          </Link>
+          <Link
+            href="#"
+            aria-label="Twitter"
+            className="hover:text-brand-purple transition-colors"
+          >
             <Twitter size={20} />
-          </a>
+          </Link>
         </div>
+
         <button
           className="lg:hidden text-white p-2 -mr-2"
           onClick={toggleMenu}
-          aria-label="Toggle menu"
+          aria-label="Toggle mobile menu"
+          aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -65,24 +74,16 @@ export const Header = () => {
             className="lg:hidden bg-background border-b border-white/10 overflow-hidden"
           >
             <nav className="flex flex-col items-center py-8 gap-6 text-gray-300">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link}
-                  href={`#${link.toLowerCase().replace(" ", "-")}`}
+              {NAV_LINKS.map(({ label, href }) => (
+                <Link
+                  key={href}
+                  href={href}
                   className="text-lg hover:text-white transition-colors"
                   onClick={closeMenu}
                 >
-                  {link}
-                </a>
+                  {label}
+                </Link>
               ))}
-              <div className="flex gap-6 mt-4 text-gray-400">
-                <a href="#" className="hover:text-brand-purple">
-                  <Github size={24} />
-                </a>
-                <a href="#" className="hover:text-brand-purple">
-                  <Twitter size={24} />
-                </a>
-              </div>
             </nav>
           </motion.div>
         )}

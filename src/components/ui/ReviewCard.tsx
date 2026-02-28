@@ -1,26 +1,23 @@
-import React from "react";
-import { motion, Variants } from "framer-motion";
-import { Review } from "../../types";
+"use client";
+import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { Review } from "@/types";
+import { fadeInUp } from "@/lib/framer-variants";
 
-interface TestimonialCardProps {
+interface ReviewCardProps {
   review: Review;
 }
-const cardVariant: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
 
-export const ReviewCard: React.FC<TestimonialCardProps> = ({ review }) => {
+export const ReviewCard = ({ review }: ReviewCardProps) => {
   return (
     <motion.div
-      variants={cardVariant}
+      variants={fadeInUp}
       className="p-8 rounded-2xl border border-white/5 bg-[#0a0a0a] relative flex flex-col justify-between h-full"
     >
       <div>
-        <div className="flex gap-1 mb-4 text-[var(--color-brand-purple)]">
-          {[...Array(review.rating)].map((_, i) => (
-            <span key={i}>
+        <div className="flex gap-1 mb-4 text-brand-purple">
+          {Array.from({ length: review.rating }).map((_, i) => (
+            <span key={`star-${review.id}-${i}`}>
               <Star size={15} />
             </span>
           ))}
@@ -29,7 +26,7 @@ export const ReviewCard: React.FC<TestimonialCardProps> = ({ review }) => {
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--color-brand-purple)] to-[var(--color-brand-pink)] shrink-0" />
+        <div className="w-10 h-10 rounded-full bg-linear-to-br from-brand-purple to-brand-pink shrink-0" />
         <div>
           <div className="font-medium text-white">{review.author}</div>
           <div className="text-sm text-gray-500">{review.role}</div>

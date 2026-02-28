@@ -18,7 +18,7 @@ export default function Home() {
   };
 
   return (
-    <main className="w-full">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -26,6 +26,6 @@ export default function Home() {
       <HeroSection />
       <BenefitsSection />
       <ReviewSection />
-    </main>
+    </>
   );
 }

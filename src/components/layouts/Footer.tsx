@@ -81,12 +81,12 @@ export const Footer = () => {
       <div className="max-w-300 mx-auto pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
         <div>© {new Date().getFullYear()} Aura. All rights reserved.</div>
         <div className="flex gap-4">
-          <a href="#" className="hover:text-gray-400 transition-colors">
+          <Link href="#" className="hover:text-gray-400 transition-colors">
             Privacy Policy
-          </a>
-          <a href="#" className="hover:text-gray-400 transition-colors">
+          </Link>
+          <Link href="#" className="hover:text-gray-400 transition-colors">
             Terms of Service
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
