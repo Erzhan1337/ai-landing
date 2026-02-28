@@ -1,4 +1,35 @@
+import Link from "next/link";
+
 export const Footer = () => {
+  const resources = [
+    {
+      name: "Documentation",
+      href: "#",
+    },
+    {
+      name: "Smart Contracts",
+      href: "#",
+    },
+    {
+      name: "White paper",
+      href: "#",
+    },
+  ];
+
+  const community = [
+    {
+      name: "GitHub",
+      href: "#",
+    },
+    {
+      name: "Twitter",
+      href: "#",
+    },
+    {
+      name: "Discord",
+      href: "#",
+    },
+  ];
   return (
     <footer className="pt-20 pb-10 px-6 border-t border-white/10 bg-background">
       <div className="max-w-300 mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -15,21 +46,16 @@ export const Footer = () => {
             Resources
           </h4>
           <ul className="space-y-3 text-gray-400 text-sm">
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Documentation
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Smart Contracts
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                White paper
-              </a>
-            </li>
+            {resources.map((resource) => (
+              <li key={resource.name}>
+                <Link
+                  href={resource.href}
+                  className="hover:text-white transition-colors"
+                >
+                  {resource.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -38,27 +64,22 @@ export const Footer = () => {
             Community
           </h4>
           <ul className="space-y-3 text-gray-400 text-sm">
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Twitter (X)
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                GitHub
-              </a>
-            </li>
+            {community.map((c) => (
+              <li key={c.name}>
+                <Link
+                  href={c.href}
+                  className="hover:text-white transition-colors"
+                >
+                  {c.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
 
       <div className="max-w-300 mx-auto pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600">
-        <div>© {new Date().getFullYear()} SITE NAME. All rights reserved.</div>
+        <div>© {new Date().getFullYear()} Aura. All rights reserved.</div>
         <div className="flex gap-4">
           <a href="#" className="hover:text-gray-400 transition-colors">
             Privacy Policy

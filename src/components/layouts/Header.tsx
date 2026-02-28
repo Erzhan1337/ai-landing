@@ -4,6 +4,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Github, Twitter } from "lucide-react";
 import { useUIStore } from "@/store/useUIStore";
+import Link from "next/link";
 
 const NAV_LINKS = [
   "Smart Contracts",
@@ -19,19 +20,22 @@ export const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-360 mx-auto px-6 h-24 flex items-center justify-between">
-        <div className="text-lg md:text-xl font-medium tracking-wide text-white">
-          SITE NAME
-        </div>
+        <Link
+          href="/"
+          className="text-lg md:text-xl font-medium tracking-wide text-white"
+        >
+          Aura
+        </Link>
 
         <nav className="hidden lg:flex gap-8 text-[13px] text-gray-300">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link}
               href={`#${link.toLowerCase().replace(" ", "-")}`}
               className="hover:text-white transition-colors"
             >
               {link}
-            </a>
+            </Link>
           ))}
         </nav>
 
