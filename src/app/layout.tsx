@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import {ReactNode} from "react";
-
+import { ReactNode } from "react";
+import { Header } from "@/components/layouts/Header";
+import { Footer } from "@/components/layouts/Footer";
 
 const montserrat = Montserrat({
-  subsets: ["latin","cyrillic"],
+  subsets: ["latin", "cyrillic"],
 });
 
 export const metadata: Metadata = {
@@ -20,10 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${montserrat.className} antialiased`}
-      >
-        {children}
+      <body className={`${montserrat.className} antialiased`}>
+        <Header />
+        <div>{children}</div>
+        <Footer />
       </body>
     </html>
   );

@@ -1,2 +1,36 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: #050505;
+  --color-foreground: #ffffff;
+  --color-brand-purple: #a855f7;
+  --color-brand-pink: #e83e8c;
+  --color-brand-blue: #6f42c1;
+  --background-image-gradient-text: linear-gradient(
+    to right,
+    var(--color-brand-pink),
+    var(--color-brand-purple),
+    var(--color-brand-blue)
+  );
+}
+
+@utility text-gradient {
+  background-image: var(--background-image-gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  overflow-x: hidden;
+}
